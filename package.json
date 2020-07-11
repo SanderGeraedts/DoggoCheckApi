@@ -1,0 +1,33 @@
+{
+  "name": "doggo-check-api",
+  "version": "1.0.0",
+  "description": "The Backend for the DoggoCheck!-app",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node -- src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SanderGeraedts/DoggoCheckApi.git"
+  },
+  "author": "Sander Geraedts",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SanderGeraedts/DoggoCheckApi/issues"
+  },
+  "homepage": "https://github.com/SanderGeraedts/DoggoCheckApi#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.10.4",
+    "@babel/core": "^7.10.4",
+    "@babel/node": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "apollo-server-express": "^2.15.1",
+    "express": "^4.17.1",
+    "graphql": "^15.3.0",
+    "mongoose": "^5.9.23"
+  }
+}
