@@ -10,13 +10,16 @@ export const typeDefs = gql`
   }
 
   type Query {
-    dog: Dog
-    defecation: Defecation
-    weight: Weight
-    allDogs: [Dog!]!
-    allDefecations: [Defecation!]!
-    allWeights: [Weight!]!
+    account(id: ID): Account
+    defecation(id: ID!): Defecation
+    defecationsByDog(dog: ID!): [Defecation!]!
+    dog(id: ID!): Dog
+    weight(id: ID!): Weight
+    weightForDog(dog: ID!): [Weight!]!
     allAccounts: [Account!]!
+    allDefecations: [Defecation!]!
+    allDogs: [Dog!]!
+    allWeights: [Weight!]!
   }
 
   type Account {
@@ -30,14 +33,14 @@ export const typeDefs = gql`
     name: String!
     picture: String
     birthday: DateTime
-    owners: [Account!]!
+    defecations: [Defecation!]!
+    weights: [Weight!]!
   }
 
   type Defecation {
     id: ID!
     type: DefecationType!
-    datetime: String!
-    dog: Dog!
+    datetime: DateTime!
     comments: [Comment!]!
   }
 
@@ -45,7 +48,6 @@ export const typeDefs = gql`
     id: ID!
     value: Float!
     datetime: DateTime!
-    dog: Dog!
     comments: [Comment!]!
   }
 
@@ -71,16 +73,20 @@ export const typeDefs = gql`
     register(email: String!, password: String!): Account!
     login(email: String!, password: String!): String!
     deleteAccount(account: ID!): DeletionMutationResponse!
+
     createDog(name: String!, birthday: String, picture: String): Dog!
     deleteDog(dog: ID!): DeletionMutationResponse!
+
     createDefecation(
       type: DefecationType!
       datetime: DateTime
       dog: ID!
     ): Defecation!
     deleteDefecation(defecation: ID!): DeletionMutationResponse!
+
     createWeight(value: Float!, datetime: DateTime, dog: ID!): Weight!
     deleteWeight(weight: ID!): DeletionMutationResponse!
+
     createComment(text: String!, type: String!): Comment!
     deleteComment(comment: ID!): DeletionMutationResponse!
   }
