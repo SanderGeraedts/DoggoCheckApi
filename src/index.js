@@ -7,6 +7,7 @@ import { typeDefs } from "./typedefs";
 
 require("dotenv").config();
 const SECRET = process.env.PASSWORD_SECRET;
+const PORT = process.env.PORT;
 
 const startServer = async () => {
   const app = express();
@@ -47,8 +48,10 @@ const startServer = async () => {
     useUnifiedTopology: true
   });
 
-  app.listen({ port: 4000 }, () => {
-    console.log(`server ready at http://localhost:4000${server.graphqlPath}`);
+  app.listen({ port: PORT }, () => {
+    console.log(
+      `server ready at http://localhost:${PORT}${server.graphqlPath}`
+    );
   });
 };
 
